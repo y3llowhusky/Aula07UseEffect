@@ -7,8 +7,8 @@ export default function App() {
 
   // Estruturação do useEffect()
   useEffect(() => {
-    console.log("hook executando na inicialização...")
-  }, [])
+    console.log("Executando de acordo com alteração do estado...")
+  }, [contador])
 
   return (
     <View style={styles.container}>
