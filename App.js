@@ -1,16 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { useState } from 'react';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Button } from "react-native";
+import { useState, useEffect } from "react";
 
 export default function App() {
-  const[contador, setContador] = useState(0)
+  const [contador, setContador] = useState(0);
+
+  // Estruturação do useEffect()
+  useEffect(() => {
+    console.log("hook executando na inicialização...")
+  }, [])
+
   return (
     <View style={styles.container}>
       <Text style={styles.fontG}>Valor: {contador}</Text>
-      <Button 
-        title='Aumentar'
-        onPress={()=>setContador(contador+1)}
-      />
+      <Button title="Aumentar" onPress={() => setContador(contador + 1)} />
       <StatusBar style="auto" />
     </View>
   );
@@ -19,11 +22,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   fontG: {
-    fontSize: 26
-  }
+    fontSize: 26,
+  },
 });
