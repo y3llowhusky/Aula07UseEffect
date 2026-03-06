@@ -4,24 +4,24 @@ import { useState, useEffect } from "react";
 
 export default function App() {
   const [contador, setContador] = useState(0);
-  const [usuario, setUsuario] = useState([]); // irá armazenar o usuário vindo da API
+  const [frase, setFrase] = useState([]); // irá armazenar o usuário vindo da API
 
   // Estruturação do useEffect()
   useEffect(() => {
-    async function buscarUsuarios() {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users/1",
-      );
+    async function buscarFrase() {
+      const response = await fetch("https://quoteslate.vercel.app/api/quotes/random");
       const data = await response.json();
-      setUsuario(data); // armazenando dados da api no estado
+      setFrase(data); // armazenando dados da api no estado
+      console.log(frase)
     }
 
-    buscarUsuarios(); // chama função desenvolvida acima
+    buscarFrase(); // chama função desenvolvida acima
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.fontG}>{usuario.company.name}</Text>
+      <Text style={styles.fontG}>Frase: {frase.quote}</Text>
+      <Text>Autor: {frase.author}</Text>
       <StatusBar style="auto" />
     </View>
   );
